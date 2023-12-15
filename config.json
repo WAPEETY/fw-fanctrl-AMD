@@ -36,14 +36,19 @@
         },
         "medium": {
             "fanSpeedUpdateFrequency": 5,
-            "movingAverageInterval": 30,
+            "movingAverageInterval": 15,
             "speedCurve": [
-                { "temp": 0, "speed": 15 },
-                { "temp": 40, "speed": 15 },
-                { "temp": 60, "speed": 30 },
-                { "temp": 70, "speed": 40 },
-                { "temp": 75, "speed": 80 },
-                { "temp": 85, "speed": 100 }
+                { "temp": 0, "speed": 25 },
+                { "temp": 50, "speed": 25 },
+		{ "temp": 55, "speed": 25 },
+                { "temp": 65, "speed": 25 },
+                { "temp": 68, "speed": 40 },
+		{ "temp": 70, "speed": 45 },
+                { "temp": 80, "speed": 45 },
+                { "temp": 85, "speed": 55 },
+		{ "temp": 88, "speed": 65 },
+		{ "temp": 90, "speed": 75 },
+		{ "temp": 95, "speed": 100 }
             ]
         },
         "agile": {
@@ -84,9 +89,9 @@
             "fanSpeedUpdateFrequency": 2,
             "movingAverageInterval": 5,
             "speedCurve": [
-                { "temp": 0, "speed": 20 },
-                { "temp": 40, "speed": 50 },
-                { "temp": 65, "speed": 100 }
+                { "temp": 0, "speed": 40 },
+                { "temp": 45, "speed": 70 },
+                { "temp": 70, "speed": 100 }
             ]
         }
     }

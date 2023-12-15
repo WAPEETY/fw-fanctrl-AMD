@@ -84,7 +84,7 @@ class FanController:
         with open("/tmp/.fw-fanctrl.tmp", "r+") as fp:
             strategy = fp.read()
             fp.seek(0)
-            fp.truncate
+            fp.truncate()
 
             if strategy == "defaultStrategy":
                 strategy = self.config["defaultStrategy"]
@@ -146,19 +146,18 @@ class FanController:
             ).stdout
         )
 
-        # sensors -j does not return the core temperatures at startup
-        if "coretemp-isa-0000" not in sensorsOutput.keys():
-            return
-
-        cores = 0
-        for k, v in sensorsOutput["coretemp-isa-0000"].items():
-            if k.startswith("Core "):
-                i = int(k.split(" ")[1])
-                cores += 1
-                sumCoreTemps += float(v[[key for key in v.keys() if key.endswith("_input")][0]])
+        # AMD Ryzen CPU temperature reading
+        if "k10temp-pci-00c3" in sensorsOutput.keys():
+            temp = sensorsOutput["k10temp-pci-00c3"]["Tctl"]["temp1_input"]
+            sumCoreTemps = float(temp)
+            cores = 1  # Since the temperature is for the whole CPU
+        else:
+            # Fallback or additional logic for other CPUs can be added here
+            pass
 
         self._tempIndex = (self._tempIndex + 1) % len(self.temps)
         self.temps[self._tempIndex] = sumCoreTemps / cores
+
 
     # return mean temperature over a given time interval (in seconds)
     def getMovingAverageTemperature(self, timeInterval):
