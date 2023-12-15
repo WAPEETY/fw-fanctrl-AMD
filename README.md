@@ -1,5 +1,7 @@
 # fw-fanctrl
-
+# Added support for AMD Framework mainboards, Tested on ubuntu 23.10 only
+# Includes custom compiled ECtool that includes support for AMD mainboards
+# Medium profile tweaked for AMD
 This is a simple Python service for Linux that drives the Framework Laptop's fan speed according to a configurable speed/temp curve.
 Its default configuration targets very silent fan operation, but it's easy to configure it for a different comfort/performance trade-off.
 Its possible to specify two separate fan curves depending on whether the Laptop is charging/discharging.
