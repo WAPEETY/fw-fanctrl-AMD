@@ -23,7 +23,13 @@ if [ "$1" = "remove" ]; then
     echo "fw-fanctrl has been removed successfully from system"
 elif [ -z $1 ]; then
 
-    pip3 install -r requirements.txt
+    if [ -f /etc/arch-release ]; then
+        echo "Arch Linux detected, installing watchdog from pacman"
+        # maybe not the best way, should use venv or find a way to install requirements.txt
+        pacman -S python-watchdog
+    else 
+        pip3 install -r requirements.txt
+    fi
     cp ./bin/ectool /usr/local/bin
     cp ./fanctrl.py /usr/local/bin/fw-fanctrl
     chmod +x /usr/local/bin/fw-fanctrl

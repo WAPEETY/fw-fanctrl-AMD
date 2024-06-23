@@ -10,7 +10,7 @@
                 { "temp": 0, "speed": 0 }
             ]
         },
-        "lazyest": {
+        "laziest": {
             "fanSpeedUpdateFrequency": 5,
             "movingAverageInterval": 40,
             "speedCurve": [
